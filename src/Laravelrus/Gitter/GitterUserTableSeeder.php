@@ -4,13 +4,13 @@ use Illuminate\Database\Seeder;
 
 class GitterUserTableSeeder extends Seeder {
 
-	public function run()
-	{
+    public function run()
+    {
         $gitter = $this->container->make('gitter');
 
         foreach ($gitter->users() as $user) {
             GitterUser::create($user);
-		}
+        }
     }
 
 }
