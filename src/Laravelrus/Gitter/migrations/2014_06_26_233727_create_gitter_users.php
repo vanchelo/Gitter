@@ -15,7 +15,7 @@ class CreateGitterUsers extends Migration {
 		Schema::create('gitter_users', function(Blueprint $table)
 		{
 			$table->string('id', 24);
-            $table->primary('id');
+    			$table->primary('id');
 			$table->string('username', 255);
 			$table->string('displayName', 255);
 			$table->string('url', 255);
