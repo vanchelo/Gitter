@@ -34,8 +34,8 @@ class Gitter {
             throw new \InvalidArgumentException('Message must be a scalar');
         }
 
-        $response = $this->sendRequest($this->getRoomUrl('chatMessage'), array(
-            'text' => $message,
+        $response = $this->sendRequest($this->getRoomUrl('chatMessages'), array(
+            'text'   => $message,
             'status' => $status
         ));
 
