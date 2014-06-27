@@ -6,7 +6,7 @@ class GitterServiceProvider extends ServiceProvider {
 
     public function boot()
     {
-        $this->package('gitter', 'gitter', __DIR__);
+        $this->package('laravelrus/gitter-bot', 'gitter');
 
         $this->app['router']->controller('/gitter', 'Laravelrus\Gitter\GitterController');
     }
