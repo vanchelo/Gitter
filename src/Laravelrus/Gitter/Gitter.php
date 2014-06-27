@@ -23,10 +23,11 @@ class Gitter {
      * Send message
      *
      * @param string $message
+     * @param bool $status Send as status message
      * @return mixed
      * @throw InvalidArgumentException
      */
-    public function sendMessage($message)
+    public function sendMessage($message, $status = false)
     {
         if ( ! is_scalar($message))
         {
@@ -34,7 +35,8 @@ class Gitter {
         }
 
         $response = $this->sendRequest($this->getRoomUrl('chatMessage'), array(
-            'text' => $message
+            'text' => $message,
+            'status' => $status
         ));
 
         return $response;
@@ -97,7 +99,7 @@ class Gitter {
         if ($data)
         {
             curl_setopt($curl, CURLOPT_POST, true);
-            curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($data));
+            curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($data, JSON_UNESCAPED_UNICODE));
         }
 
         $response = json_decode(curl_exec($curl), true);

@@ -59,21 +59,24 @@ class GitterController extends Controller {
             if ( ! in_array($user['id'], $users))
             {
                 // Добавляем в массив чтобы потом поприветствовать
-                $newUsers[] = $users;
+                $newUsers[] = $user;
                 // Добавляем в базу
                 GitterUser::create($user);
             }
         }
 
-        $message = '/me Приветствуем Вас, @%s, в нашем дружном чате';
+        $message = 'Приветствуем Вас, @%s, в нашем дружном чате';
+
+        $response = array();
 
         foreach ($newUsers as $user)
         {
-            $this->gitter->sendMessage(sprintf($message, $user['username']));
+            $response[] = $this->gitter->sendMessage(sprintf($message, $user['username']));
         }
 
         return [
             'users' => $newUsers,
+            'response' => $response,
             'timestamp' => time(),
             'timeout' => round((microtime(1) - $t) * 1000)
         ];
