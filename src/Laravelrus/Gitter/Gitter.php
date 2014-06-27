@@ -24,7 +24,6 @@ class Gitter {
      *
      * @param GitterMessage $message
      * @return mixed
-     * @throw InvalidArgumentException
      */
     public function sendMessage(GitterMessage $message)
     {
@@ -65,13 +64,18 @@ class Gitter {
      * Send request
      *
      * @param string $url
-     * @param GitterRequest $data
+     * @param GitterRequest $request
      * @return mixed
      */
     public function sendRequest($url, GitterRequest $request = null)
     {
+        if ( ! is_string($url))
+        {
+            throw new \InvalidArgumentException('Url must be a string');
+        }
+
         $curl = curl_init();
-        curl_setopt($curl, CURLOPT_URL, (string) $url);
+        curl_setopt($curl, CURLOPT_URL, $this->apiUrl . ltrim($url, '/'));
         curl_setopt($curl, CURLOPT_RETURNTRANSFER,true);
         curl_setopt($curl, CURLOPT_HTTPHEADER, array(
             'Content-Type: application/json',
@@ -96,7 +100,7 @@ class Gitter {
     }
 
     /**
-     * Send client User Agent
+     * Set client User Agent
      *
      * @param string $userAgent
      * @return $this
@@ -109,13 +113,13 @@ class Gitter {
     }
 
     /**
-     * Get full Gitter Room Url
+     * Get room Url
      *
      * @param string $type
      * @return string
      */
     protected function getRoomUrl($type = '')
     {
-        return $this->apiUrl . 'rooms/' . $this->roomId . '/' . $type;
+        return 'rooms/' . $this->roomId . '/' . $type;
     }
 }
