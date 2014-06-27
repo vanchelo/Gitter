@@ -71,7 +71,7 @@ class GitterController extends Controller {
 
         foreach ($newUsers as $user)
         {
-            $response[] = $this->gitter->sendMessage(sprintf($message, $user['username']));
+            $response[] = $this->gitter->sendMessage(sprintf($message, $user['username']), true);
         }
 
         return [
