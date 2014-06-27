@@ -1,0 +1,19 @@
+{
+    "name": "laravelrus/gitter-bot",
+    "description": "Gitter Bot",
+    "keywords": ["gitter"],
+    "license": "MIT",
+    "authors": [
+
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "illuminate/support": ">=4.1.0"
+    },
+    "autoload": {
+        "psr-0": {
+            "Laravelrus\\Gitter\\": "src/"
+        }
+    },
+    "minimum-stability": "stable"
+}
