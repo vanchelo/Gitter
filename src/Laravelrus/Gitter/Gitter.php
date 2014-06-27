@@ -86,7 +86,7 @@ class Gitter {
         curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
         curl_setopt($curl, CURLOPT_USERAGENT, $this->userAgent);
 
-        if ($request instanceof GitterRequest)
+        if ($request)
         {
             curl_setopt($curl, CURLOPT_POST, true);
             curl_setopt($curl, CURLOPT_POSTFIELDS, $request->toJson());
