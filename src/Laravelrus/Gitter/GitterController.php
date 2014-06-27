@@ -20,7 +20,7 @@ class GitterController extends Controller {
     }
 
     /**
-     * Информация о чате
+     * Красивый список пользователей комнаты
      *
      * @return mixed
      */
@@ -65,20 +65,22 @@ class GitterController extends Controller {
             }
         }
 
-        $message = 'Приветствуем Вас, @%s, в нашем дружном чате';
-
         $response = array();
+
+        $message = 'Приветствуем Вас, @%s, в нашем дружном чате';
 
         foreach ($newUsers as $user)
         {
-            $response[] = $this->gitter->sendMessage(sprintf($message, $user['username']), true);
+            $response[] = $this->gitter->sendMessage(
+                GitterMessage::newInstance(sprintf($message, $user['username']))->isStatus()
+            );
         }
 
         return [
-            'users' => $newUsers,
-            'response' => $response,
+            'users'     => $newUsers,
+            'response'  => $response,
             'timestamp' => time(),
-            'timeout' => round((microtime(1) - $t) * 1000)
+            'timeout'   => round((microtime(1) - $t) * 1000)
         ];
     }
 

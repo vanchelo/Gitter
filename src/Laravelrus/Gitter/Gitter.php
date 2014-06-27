@@ -22,22 +22,13 @@ class Gitter {
     /**
      * Send message
      *
-     * @param string $message
-     * @param bool $status Send as status message
+     * @param GitterMessage $message
      * @return mixed
      * @throw InvalidArgumentException
      */
-    public function sendMessage($message, $status = false)
+    public function sendMessage(GitterMessage $message)
     {
-        if ( ! is_scalar($message))
-        {
-            throw new \InvalidArgumentException('Message must be a scalar');
-        }
-
-        $response = $this->sendRequest($this->getRoomUrl('chatMessages'), array(
-            'text'   => $message,
-            'status' => $status
-        ));
+        $response = $this->sendRequest($this->getRoomUrl('chatMessages'), $message);
 
         return $response;
     }
@@ -74,16 +65,11 @@ class Gitter {
      * Send request
      *
      * @param string $url
-     * @param array $data
+     * @param GitterRequest $data
      * @return mixed
      */
-    protected function sendRequest($url, array $data = array())
+    public function sendRequest($url, GitterRequest $request = null)
     {
-        if ( ! is_array($data))
-        {
-            throw new \InvalidArgumentException('Data must be an array or not set');
-        }
-
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_URL, (string) $url);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER,true);
@@ -96,10 +82,10 @@ class Gitter {
         curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
         curl_setopt($curl, CURLOPT_USERAGENT, $this->userAgent);
 
-        if ($data)
+        if ($request instanceof GitterRequest)
         {
             curl_setopt($curl, CURLOPT_POST, true);
-            curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($data, JSON_UNESCAPED_UNICODE));
+            curl_setopt($curl, CURLOPT_POSTFIELDS, $request->toJson());
         }
 
         $response = json_decode(curl_exec($curl), true);
