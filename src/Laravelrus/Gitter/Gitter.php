@@ -24,15 +24,15 @@ class Gitter {
      *
      * @param string $roomId
      *
-     * @throws \InvalidArgumentException if $roomId argument is not of type 'string'
+     * @throws \InvalidArgumentException if $roomId argument is empty or not of type 'string'
      *
      * @return self
      */
     public function setRoomId($roomId)
     {
-        if ( ! is_string($roomId))
+        if ( ! is_string($roomId) || $roomId === '')
         {
-            throw new \InvalidArgumentException('Room ID must be a string');
+            throw new \InvalidArgumentException('Room ID must be a string and cannot be empty');
         }
 
         $this->roomId = $roomId;
@@ -45,13 +45,13 @@ class Gitter {
      *
      * @param string $token
      *
-     * @throws \InvalidArgumentException if $token argument is not of type 'string'
+     * @throws \InvalidArgumentException if $token argument is empty or not of type 'string'
      */
     public function setToken($token)
     {
-        if ( ! is_string($token))
+        if ( ! is_string($token) || $token === '')
         {
-            throw new \InvalidArgumentException('Token must be a string');
+            throw new \InvalidArgumentException('Token must be a string and cannot be empty');
         }
 
         $this->token = $token;

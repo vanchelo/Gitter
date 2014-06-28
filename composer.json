@@ -11,6 +11,9 @@
         "illuminate/support": ">=4.1.0"
     },
     "autoload": {
+        "classmap": [
+            "src/commands"
+        ],
         "psr-0": {
             "Laravelrus\\Gitter\\": "src/"
         }
