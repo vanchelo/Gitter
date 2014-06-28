@@ -61,7 +61,7 @@ use Laravelrus\Gitter\GitterMessage;
  * где $token - Ваш токен в системе Gitter,
  * $roomID - ID комнаты с которой планируем работать
  */
-$gitter = new Gitter($token, $roomId);
+$gitter = new Gitter($roomId, $token);
 
 /**
  * Получаем список пользователей
