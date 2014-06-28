@@ -28,7 +28,10 @@ class GitterServiceProvider extends ServiceProvider {
             );
         });
 
-        $this->app->singleton('Laravelrus\Gitter\Commands\GitterCheckUsersCommand', 'gitter');
+        $this->app->singleton('Laravelrus\Gitter\Gitter', 'gitter');
+
+        // Reqgister artisan command
+        $this->commands('Laravelrus\Gitter\Commands\GitterCheckUsersCommand');
     }
 
 }
