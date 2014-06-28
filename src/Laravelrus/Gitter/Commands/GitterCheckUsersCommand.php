@@ -1,6 +1,7 @@
 <?php namespace Laravelrus\Gitter\Commands;
 
 use Illuminate\Console\Command;
+use Laravelrus\Gitter\GitterUser;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
 
