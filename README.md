@@ -44,3 +44,46 @@ $gitter = App::make('gitter');
 
 $gitter->setUserAgent('Firefox');
 ```
+
+### Использование класса Gitter вне Laravel
+```
+/**
+ * Подключаем автозагрузчик composer
+ */
+require 'vendor/autoload.php';
+
+use Laravelrus\Gitter\Gitter;
+use Laravelrus\Gitter\GitterMessage;
+
+/**
+ * Создаем экземмпляр класса Gitter
+ *
+ * где $token - Ваш токен в системе Gitter,
+ * $roomID - ID комнаты с которой планируем работать
+ */
+$gitter = new Gitter($token, $roomId);
+
+/**
+ * Получаем список пользователей
+ */
+$users = $gitter->users();
+
+print_r($users);
+
+/**
+ * В процессе выполнения программы можем сменить комнату
+ */
+$gitter->setRoomId($roomId);
+
+/**
+ * Отправка сообщения
+ */
+// Создаем экземпляр класс GitterMessage
+$message = new GitterMessage('Привет всем участникам!');
+
+// Отправляем наше сообщение
+$response = $gitter->sendMessage($message);
+
+// Распечатаем ответ с сервера чтобы удостовериться в успешном выполнении нашего запроса
+print_r($reponse);
+```
