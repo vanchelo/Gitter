@@ -1,4 +1,4 @@
-<?php namespace Laravelrus\Gitter;
+<?php namespace Laravelrus\Gitter\Commands;
 
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputOption;
