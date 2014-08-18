@@ -2,8 +2,8 @@
 
 use Illuminate\Support\ServiceProvider;
 
-class GitterServiceProvider extends ServiceProvider {
-
+class GitterServiceProvider extends ServiceProvider
+{
     public function boot()
     {
         $this->package('laravelrus/gitter-bot', 'gitter');
@@ -33,5 +33,4 @@ class GitterServiceProvider extends ServiceProvider {
         // Register artisan command
         $this->commands('Laravelrus\Gitter\Commands\GitterCheckUsersCommand');
     }
-
 }

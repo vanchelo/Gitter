@@ -7,8 +7,8 @@ use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
 
-class GitterCheckUsersCommand extends Command {
-
+class GitterCheckUsersCommand extends Command
+{
     /**
      * The console command name.
      *
@@ -25,8 +25,6 @@ class GitterCheckUsersCommand extends Command {
 
     /**
      * Create a new command instance.
-     *
-     * @return void
      */
     public function __construct()
     {
@@ -40,7 +38,7 @@ class GitterCheckUsersCommand extends Command {
      */
     public function fire()
     {
-        /** @var Gitter $gitter */
+        /** @var \Laravelrus\Gitter\Gitter $gitter */
         $gitter = $this->laravel->make('gitter');
 
         $users = GitterUser::orderBy('username')->lists('id');
@@ -58,7 +56,7 @@ class GitterCheckUsersCommand extends Command {
             }
         }
 
-        $message = 'Приветствуем Вас, @%s, в нашем дружном чате';
+        $message = $this->laravel['config']->get('gitter::config.welcome_message');
 
         foreach ($newUsers as $user)
         {
@@ -89,5 +87,4 @@ class GitterCheckUsersCommand extends Command {
     {
         return array();
     }
-
 }

@@ -2,8 +2,8 @@
 
 use Illuminate\Routing\Controller;
 
-class GitterController extends Controller {
-
+class GitterController extends Controller
+{
     /**
      * @var Gitter
      */
@@ -83,5 +83,4 @@ class GitterController extends Controller {
             'timeout'   => round((microtime(1) - $t) * 1000)
         ];
     }
-
 }

@@ -1,7 +1,7 @@
 <?php namespace Laravelrus\Gitter;
 
-class Gitter {
-
+class Gitter
+{
     protected $apiUrl = 'https://api.gitter.im/v1/';
     protected $userAgent = 'PHP Bot (http://walfire.ru)';
     protected $token;
@@ -118,7 +118,7 @@ class Gitter {
 
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_URL, $this->apiUrl . ltrim($url, '/'));
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER,true);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($curl, CURLOPT_HTTPHEADER, array(
             'Content-Type: application/json',
             'Accept: application/json',

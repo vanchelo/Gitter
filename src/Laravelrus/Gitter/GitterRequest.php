@@ -1,7 +1,7 @@
 <?php namespace Laravelrus\Gitter;
 
-class GitterRequest implements \JsonSerializable {
-
+class GitterRequest implements \JsonSerializable
+{
     protected $properties;
 
     function __construct(array $request)
@@ -18,5 +18,4 @@ class GitterRequest implements \JsonSerializable {
     {
         return json_encode($this, JSON_UNESCAPED_UNICODE);
     }
-
 }

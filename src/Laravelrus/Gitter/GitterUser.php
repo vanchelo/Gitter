@@ -2,8 +2,8 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-class GitterUser extends Model {
-
+class GitterUser extends Model
+{
     public $incrementing = false;
 
     public $timestamps = false;
@@ -11,5 +11,4 @@ class GitterUser extends Model {
     protected $fillable = array(
         'id', 'username', 'displayName', 'avatarUrlSmall', 'avatarUrlMedium', 'url'
     );
-
 }

@@ -1,7 +1,7 @@
 <?php namespace Laravelrus\Gitter;
 
-class GitterMessage extends GitterRequest {
-
+class GitterMessage extends GitterRequest
+{
     function __construct($message = null)
     {
         $this->setMessage($message);
@@ -30,5 +30,4 @@ class GitterMessage extends GitterRequest {
     {
         return new self($message);
     }
-
 }

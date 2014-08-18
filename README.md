@@ -13,9 +13,15 @@ php artisan config:publish laravelrus/gitter-bot
 php artisan migrate --package=laravelrus/gitter-bot
 ```
 
+### Подключаем сервис-провайдер
+Прописываем в app/config/app.php в секцию `providers`
+```
+'Laravelrus\Gitter\GitterServiceProvider'
+```
+
 ### Наполняем таблицу gitter_users участниками чата (опционально)
 ```
-php artisan db:seed --class=Laravelrus\Gitter\GitterUserTableSeeder
+php artisan db:seed --class=Laravelrus\\Gitter\\GitterUserTableSeeder
 ```
 
 ### Пример отправки сообщения

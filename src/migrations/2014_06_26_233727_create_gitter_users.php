@@ -3,8 +3,8 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateGitterUsers extends Migration {
-
+class CreateGitterUsers extends Migration
+{
     /**
      * Run the migrations.
      *
@@ -12,7 +12,7 @@ class CreateGitterUsers extends Migration {
      */
     public function up()
     {
-        Schema::create('gitter_users', function(Blueprint $table)
+        Schema::create('gitter_users', function (Blueprint $table)
         {
             $table->string('id', 24);
             $table->primary('id');
@@ -24,7 +24,6 @@ class CreateGitterUsers extends Migration {
         });
     }
 
-
     /**
      * Reverse the migrations.
      *
@@ -34,5 +33,4 @@ class CreateGitterUsers extends Migration {
     {
         Schema::drop('gitter_users');
     }
-
 }
