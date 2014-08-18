@@ -14,8 +14,8 @@ class GitterRequest implements \JsonSerializable
         return $this->properties;
     }
 
-    public function toJson()
+    public function toJson($option = JSON_UNESCAPED_UNICODE)
     {
-        return json_encode($this, JSON_UNESCAPED_UNICODE);
+        return json_encode($this, $option);
     }
 }
