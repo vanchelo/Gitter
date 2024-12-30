@@ -91,5 +91,5 @@ $message = new GitterMessage('Привет всем участникам!');
 $response = $gitter->sendMessage($message);
 
 // Распечатаем ответ с сервера чтобы удостовериться в успешном выполнении нашего запроса
-print_r($reponse);
+print_r($response);
 ```
